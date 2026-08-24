@@ -3,41 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--
-  LIVE 2026-08-24 · Crimson Drilling Services
-  Factory: /workspace/ops/oilfield-tools/
-  Brand:   /workspace/crimson/brand.md  (invoice tokens — exact, do not alter)
-  Page: 001 · 2026-08-24 · restyled to Crimson Drilling Services LLC
-
-  META TITLE:
-  4.5 Inch Drill Pipe Weight & Capacity Calculator | Crimson Drilling Services
-
-  META DESCRIPTION:
-  Calculate 4.5" drill pipe body weight, string weight, internal capacity (bbl/ft, gal/ft), and displacement. API 5DP wall/ID table plus field formulas. Place or source pipe — WhatsApp Chris Tyler / Crimson Drilling Services.
-
-  TARGET KEYWORDS:
-  4.5 inch drill pipe weight, 4.5 drill pipe capacity calculator, 4 1/2" DP specs, 16.60 lb/ft drill pipe ID
-
-  INTERNAL LINKS (stubs — queued, not drafted yet):
-  ./002-hwdp-vs-drill-pipe.html
-  ./003-drill-pipe-capacity-calculator.html
-  ./004-tubing-weight-calculator.html
-  ./005-rod-string-weight-calculator.html
-  ./006-casing-capacity-calculator.html
-  ./007-annular-volume-calculator.html
-  ./008-hydrostatic-from-mud-weight.html
-  ./009-bit-nozzle-hhp-calculator.html
-  ./010-centrifuge-g-force-calculator.html
-
-  FORMULA SOURCES (do not invent mill-sheet adjusted weights or grade strengths):
-  - Capacity / displacement: Lapeyrouse, Formulas and Calculations for Drilling, Production, and Workover — bbl/ft = ID² / 1029.4
-  - Plain-end body mass: API TR 5C3 / ISO 10400 USC — w = 10.69 × (D − t) × t  lb/ft
-  - Body ID: OD − 2t (API 5DP calculated ID)
-  - Common 4-1/2" designations: API Spec 5DP body table (13.75 / 16.60 / 20.00 / 22.82 lb/ft)
--->
-<title>4.5 Inch Drill Pipe Weight &amp; Capacity Calculator | Crimson Drilling Services</title>
-<meta name="description" content="Calculate 4.5&quot; drill pipe body weight, string weight, internal capacity (bbl/ft, gal/ft), and displacement. API 5DP wall/ID table plus field formulas. Place or source pipe — WhatsApp Chris Tyler / Crimson Drilling Services.">
+<title>Crimson Drilling Services LLC | Consulting · Site Supervision · Solids Control</title>
+<meta name="description" content="Crimson Drilling Services LLC — oil &amp; gas drilling consulting, site supervision, and solids control. Place or source drill pipe, rods, and packages. Chris Tyler, Holliday, Texas.">
 <meta name="robots" content="index,follow">
+<meta name="author" content="Chris Tyler, Crimson Drilling Services LLC">
+<meta name="theme-color" content="#9B2335">
+<link rel="canonical" href="https://ctyler76310-sketch.github.io/crimson-drilling-tools/">
+<link rel="icon" type="image/png" href="assets/cds-logo-monogram.png">
+<link rel="apple-touch-icon" href="assets/cds-logo-monogram.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Crimson Drilling Services LLC">
+<meta property="og:title" content="Crimson Drilling Services LLC">
+<meta property="og:description" content="Oil &amp; gas drilling consulting, site supervision, and solids control. Place or source pipe, rods, and packages. Holliday, Texas.">
+<meta property="og:url" content="https://ctyler76310-sketch.github.io/crimson-drilling-tools/">
+<meta property="og:image" content="https://ctyler76310-sketch.github.io/crimson-drilling-tools/assets/cds-linkedin-cover.png">
+<meta property="og:image:alt" content="Crimson Drilling Services LLC — Holliday, Texas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Crimson Drilling Services LLC">
+<meta name="twitter:description" content="Oil &amp; gas drilling consulting, site supervision, and solids control. Place or source pipe, rods, and packages.">
+<meta name="twitter:image" content="https://ctyler76310-sketch.github.io/crimson-drilling-tools/assets/cds-linkedin-cover.png">
 <style>
   :root {
     --crimson: #9B2335;
@@ -45,654 +29,283 @@
     --gold: #B8860B;
     --slate: #4A4A4A;
     --paper: #FFFFFF;
-    --paid: #006400;
     --rule: #D6D6D6;
-    --sans: Helvetica, Arial, sans-serif;
+    --sans: Helvetica, Arial, system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
-  html { color-scheme: light; }
+  html { color-scheme: light; scroll-behavior: smooth; }
   body {
     margin: 0;
     font: 16px/1.5 var(--sans);
     color: var(--charcoal);
     background: var(--paper);
   }
-  .wrap {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 22px 18px 56px;
+  a { color: var(--crimson); }
+  a:hover { color: var(--charcoal); }
+  .skip {
+    position: absolute;
+    left: -999px;
+    top: 8px;
     background: var(--paper);
+    color: var(--crimson);
+    padding: 8px 12px;
+    z-index: 10;
   }
-  header.top {
-    background: var(--paper);
-    color: var(--charcoal);
-    padding: 4px 0 16px;
-    margin-bottom: 22px;
+  .skip:focus { left: 8px; }
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 18px 18px 48px;
+  }
+  header.site {
+    text-align: center;
+    padding: 8px 0 16px;
     border-bottom: 1.2pt solid var(--gold);
   }
-  .masthead { text-align: center; }
-  .wordmark {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-size: 1.28rem;
-    letter-spacing: .06em;
-    color: var(--crimson);
-    margin: 0 0 6px;
-    line-height: 1.2;
+  .logo {
+    display: block;
+    height: 96px;
+    width: auto;
+    max-width: min(420px, 100%);
+    margin: 0 auto 10px;
   }
   .tagline {
-    margin: 0 0 4px;
+    margin: 0;
     color: var(--slate);
-    font-size: .8rem;
-    letter-spacing: .015em;
+    font-size: .82rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
   }
+  nav.jump {
+    margin: 12px 0 0;
+    font-size: .72rem;
+    font-weight: bold;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  nav.jump a {
+    color: var(--crimson);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    margin: 0 .55rem;
+  }
+  nav.jump a:hover { border-bottom-color: var(--gold); }
+  .hero {
+    position: relative;
+    isolation: isolate;
+    padding: 32px 0 28px;
+    text-align: left;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url("assets/cds-linkedin-cover.png") right center / cover no-repeat;
+    opacity: .11;
+    -webkit-mask-image: linear-gradient(90deg, transparent 8%, #000 62%);
+    mask-image: linear-gradient(90deg, transparent 8%, #000 62%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(1.35rem, 4.2vw, 1.85rem);
+    line-height: 1.28;
+    font-weight: bold;
+    color: var(--charcoal);
+    max-width: 38rem;
+  }
+  .hero h1 span { color: var(--crimson); }
   .kicker {
     color: var(--crimson);
     font-size: .72rem;
     font-weight: bold;
-    letter-spacing: .1em;
+    letter-spacing: .12em;
     text-transform: uppercase;
-    margin: 16px 0 6px;
+    margin: 0 0 10px;
   }
-  header.top h1 {
-    font-size: 1.42rem;
-    line-height: 1.22;
-    margin: 0 0 8px;
-    font-weight: bold;
-    color: var(--charcoal);
-  }
-  header.top .lede {
-    margin: 0;
-    color: var(--charcoal);
-    font-size: .95rem;
-  }
-  section.block {
-    background: var(--paper);
-    padding: 0 0 18px;
-    margin-bottom: 16px;
+  section {
+    padding: 22px 0 8px;
   }
   h2 {
     font-size: .76rem;
-    letter-spacing: .1em;
+    letter-spacing: .12em;
     text-transform: uppercase;
-    margin: 0 0 12px;
+    margin: 0 0 14px;
     color: var(--crimson);
     font-weight: bold;
   }
-  h3 {
-    font-size: 1.05rem;
-    margin: 18px 0 8px;
-    color: var(--charcoal);
-    font-weight: bold;
-  }
-  p { margin: 0 0 10px; }
-  .lede { font-size: 1.02rem; }
-  label {
-    display: block;
-    font-size: .78rem;
-    font-weight: bold;
-    color: var(--crimson);
-    margin-bottom: 4px;
-  }
-  label .hint { font-weight: normal; color: var(--slate); }
-  input[type="number"], input[type="text"] {
-    width: 100%;
-    font: 16px var(--sans);
-    padding: 9px 10px;
-    border: 1px solid #C8C8C8;
-    border-radius: 0;
-    background: var(--paper);
-    color: var(--charcoal);
-  }
-  input:focus {
-    outline: none;
-    border-color: var(--crimson);
-  }
-  .grid {
+  .cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 12px;
   }
-  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-  .span2 { grid-column: span 2; }
-  .presets { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-  .presets button, .calc-btn {
-    font: bold 13px var(--sans);
-    border: 1px solid #C8C8C8;
+  .card {
     background: var(--paper);
-    color: var(--charcoal);
-    padding: 8px 12px;
-    border-radius: 0;
-    cursor: pointer;
-  }
-  .presets button[aria-pressed="true"] {
-    background: var(--paper);
-    color: var(--crimson);
-    border-color: var(--crimson);
-  }
-  .calc-btn {
-    background: var(--paper);
-    color: var(--crimson);
-    border: 1.5px solid var(--crimson);
-    width: 100%;
-    padding: 12px;
-    font-size: 15px;
-    margin-top: 8px;
-  }
-  .results {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .stat {
-    background: var(--paper);
-    border: 1px solid var(--rule);
-    border-radius: 0;
-    padding: 10px 12px;
-  }
-  .stat .lbl {
-    font-size: .72rem;
-    font-weight: bold;
-    color: var(--crimson);
-    text-transform: uppercase;
-    letter-spacing: .06em;
-  }
-  .stat .val {
-    font: bold 1.12rem/1.3 var(--sans);
-    color: var(--charcoal);
-    margin-top: 2px;
-  }
-  .stat .sub { font-size: .78rem; color: var(--slate); }
-  .stat.wide { grid-column: span 2; }
-  .note {
-    background: var(--paper);
-    color: var(--charcoal);
-    font-style: oblique;
-    padding: 10px 0 0;
-    font-size: .9rem;
-    margin: 12px 0 0;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: .88rem;
-  }
-  th, td {
-    text-align: left;
-    padding: 8px 6px;
-    border-bottom: 1px solid var(--rule);
-    vertical-align: top;
-  }
-  th {
-    font-size: .72rem;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    color: var(--crimson);
-    font-weight: bold;
-  }
-  td.num { white-space: nowrap; }
-  .scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  details.faq {
-    border-top: 1px solid var(--rule);
-    padding: 10px 0;
-  }
-  details.faq:first-of-type { border-top: none; }
-  details.faq summary {
-    cursor: pointer;
-    font-weight: bold;
-    color: var(--charcoal);
-  }
-  details.faq p { margin: 8px 0 0; color: var(--charcoal); }
-  .links a {
-    display: inline-block;
-    margin: 0 10px 8px 0;
-    color: var(--crimson);
-    text-decoration: none;
-    border-bottom: 1px dotted var(--crimson);
-    font-size: .92rem;
-  }
-  .links a.stub::after { content: " (queued)"; color: var(--slate); font-size: .75rem; border: 0; }
-  footer.cta {
-    background: var(--paper);
-    color: var(--slate);
-    padding: 18px 0 0;
-    margin-top: 4px;
     border-top: 1.2pt solid var(--gold);
-    text-align: center;
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 4px 16px;
   }
-  footer.cta h2 { color: var(--crimson); }
-  footer.cta p { color: var(--slate); }
-  footer.cta .line {
+  .card h3 {
+    margin: 0 0 8px;
     font-size: 1.05rem;
     color: var(--charcoal);
-    font-weight: bold;
-    margin: 8px 0 0;
   }
-  .identity {
-    color: var(--slate);
-    font-size: .88rem;
-    margin-top: 10px;
-  }
-  .fine {
-    font-size: .75rem;
-    color: var(--slate);
-    margin-top: 12px;
-  }
-  .formula {
-    font-family: var(--sans);
-    font-size: .86rem;
+  .card p { margin: 0; color: var(--charcoal); }
+  .tool {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1.5px solid var(--crimson);
+    padding: 18px 16px;
     background: var(--paper);
-    padding: 0;
-    border-bottom: 1px solid var(--rule);
   }
-  .muted { color: var(--slate); font-size: .92rem; }
+  .tool:hover { border-color: var(--charcoal); color: inherit; }
+  .tool .lbl {
+    color: var(--crimson);
+    font-size: .72rem;
+    font-weight: bold;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+  .tool strong {
+    display: block;
+    font-size: 1.18rem;
+    line-height: 1.25;
+    color: var(--charcoal);
+    margin: 0 0 6px;
+  }
+  .tool span {
+    color: var(--slate);
+    font-size: .92rem;
+  }
+  .contact p { margin: 0 0 8px; }
+  .contact a { font-weight: bold; text-decoration: none; border-bottom: 1px dotted var(--crimson); }
+  .cta-line {
+    margin: 16px 0 0;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--charcoal);
+  }
+  .cta-line a { color: var(--crimson); }
+  footer.site {
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1.2pt solid var(--gold);
+    text-align: center;
+    color: var(--slate);
+    font-size: .82rem;
+  }
+  footer.site p { margin: 0 0 6px; }
+  footer.site .legal { font-size: .75rem; }
+  @media (min-width: 700px) {
+    .cards { grid-template-columns: 1fr 1fr 1fr; gap: 22px; }
+    .card { padding: 16px 8px 18px; }
+    .logo { height: 110px; }
+    .hero { padding: 40px 0 32px; }
+  }
   @media (max-width: 620px) {
-    .grid, .grid3, .results { grid-template-columns: 1fr; }
-    .span2, .stat.wide { grid-column: span 1; }
-    header.top h1 { font-size: 1.22rem; }
-    .wordmark { font-size: 1.12rem; }
-    table { font-size: .8rem; }
+    .hero-bg {
+      opacity: .07;
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 40%, #000 100%);
+      mask-image: linear-gradient(180deg, transparent 0%, #000 40%, #000 100%);
+      background-position: center top;
+    }
+    .logo { height: 78px; }
   }
   @media print {
+    .hero-bg, nav.jump, .skip { display: none; }
     body, .wrap { background: #fff; }
-    .calc-btn, .presets button { border-color: #C8C8C8; }
   }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
-  <header class="top">
-    <div class="masthead">
-      <p class="wordmark">Crimson Drilling Services LLC</p>
-      <p class="tagline">Oil &amp; Gas Drilling Consulting • Site Supervision • Solids Control</p>
-    </div>
-    <div class="kicker">Field tool · 4-1/2&quot; drill pipe</div>
-    <h1>4.5 Inch Drill Pipe Weight &amp; Capacity Calculator</h1>
-    <p class="lede">Body weight, string weight, barrels per foot, and displacement for 4-1/2&quot; DP. Punch the wall or pick a common API designation. Tool-joint adjusted weight stays on the mill sheet — we don’t invent it.</p>
+  <header class="site">
+    <img class="logo" src="assets/cds-logo-derrick.png" width="480" height="320" alt="Crimson Drilling Services LLC">
+    <p class="tagline">Oil &amp; Gas Drilling Consulting · Site Supervision · Solids Control</p>
+    <nav class="jump" aria-label="On this page">
+      <a href="#services">Services</a>
+      <a href="#tools">Tools</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <section class="block">
-    <h2>Calculator</h2>
-    <p class="muted" style="margin-top:-4px;">Presets fill OD, wall, body ID, and the API <em>nominal</em> label. Change any field and hit calculate.</p>
-    <div class="presets" role="group" aria-label="API 5DP 4-1/2 inch designations">
-      <button type="button" data-preset="13.75" aria-pressed="false">13.75 lb/ft</button>
-      <button type="button" data-preset="16.60" aria-pressed="true">16.60 lb/ft</button>
-      <button type="button" data-preset="20.00" aria-pressed="false">20.00 lb/ft</button>
-      <button type="button" data-preset="22.82" aria-pressed="false">22.82 lb/ft</button>
-    </div>
-    <form id="calc" novalidate>
-      <div class="grid">
-        <div>
-          <label for="od">Pipe body OD (in)</label>
-          <input id="od" name="od" type="number" inputmode="decimal" step="0.001" min="0.1" value="4.500">
-        </div>
-        <div>
-          <label for="wall">Nominal wall (in)</label>
-          <input id="wall" name="wall" type="number" inputmode="decimal" step="0.001" min="0.01" value="0.337">
-        </div>
-        <div>
-          <label for="id">Body ID (in) <span class="hint">— OD − 2t unless you override</span></label>
-          <input id="id" name="id" type="number" inputmode="decimal" step="0.001" min="0.1" value="3.826">
-        </div>
-        <div>
-          <label for="nom">API nominal weight label (lb/ft)</label>
-          <input id="nom" name="nom" type="number" inputmode="decimal" step="0.01" min="0" value="16.60">
-        </div>
-        <div>
-          <label for="len">String length (ft)</label>
-          <input id="len" name="len" type="number" inputmode="decimal" step="0.1" min="0" value="10000">
-        </div>
-        <div>
-          <label for="jt">Joint length, optional (ft) <span class="hint">— R2 is often ~31 ft including TJs; confirm tally</span></label>
-          <input id="jt" name="jt" type="number" inputmode="decimal" step="0.1" min="0" value="31" placeholder="31">
-        </div>
-        <div>
-          <label for="adj">Adjusted weight from mill sheet (lb/ft) <span class="hint">— leave blank if you don’t have it</span></label>
-          <input id="adj" name="adj" type="number" inputmode="decimal" step="0.01" min="0" placeholder="e.g. mill sheet, not guessed">
-        </div>
-        <div>
-          <label for="mw">Mud weight in the pipe (ppg) <span class="hint">— optional, for fluid mass only</span></label>
-          <input id="mw" name="mw" type="number" inputmode="decimal" step="0.1" min="0" value="8.33">
-        </div>
+  <main id="main">
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-bg" role="presentation"></div>
+      <p class="kicker">Holliday, Texas · Field company</p>
+      <h1>Consulting, site supervision, and solids control on the well — and we <span>place and source</span> the pipe, rods, and packages the job actually needs.</h1>
+    </section>
+
+    <section id="services">
+      <h2>Services</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Drilling consulting</h3>
+          <p>Well-program and tubular judgment from the field. Specs, condition, and whether the iron belongs on your location — said straight.</p>
+        </article>
+        <article class="card">
+          <h3>Site supervision</h3>
+          <p>On-location eyes. Makeup, handling, and the call when the job is drifting. Not a desk report after the fact.</p>
+        </article>
+        <article class="card">
+          <h3>Solids control</h3>
+          <p>Centrifuges, mud systems, and cuttings. Keep the fluid honest so the hole stays drivable.</p>
+        </article>
       </div>
-      <button class="calc-btn" type="submit">Calculate weight &amp; capacity</button>
-    </form>
-    <div id="out" class="results" style="margin-top:14px;"></div>
-    <p class="note" id="assumptions"></p>
-  </section>
+    </section>
 
-  <section class="block">
-    <h2>Common 4-1/2&quot; DP designations</h2>
-    <p>Body ID is <span class="formula">OD − 2t</span>. Body weight is the API plain-end formula, <strong>not</strong> hook-load. Typical connection on 4-1/2&quot; is NC46 (4-1/2 IF) — confirm the mill sheet before you order or make up.</p>
-    <div class="scroll">
-      <table>
-        <thead>
-          <tr>
-            <th>Designation</th>
-            <th>Wall in</th>
-            <th>Body ID in</th>
-            <th>Body wt lb/ft</th>
-            <th>Cap. bbl/ft</th>
-            <th>Cap. gal/ft</th>
-            <th>Conn. (typical)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>4-1/2&quot; 13.75#</td>
-            <td class="num">0.271</td>
-            <td class="num">3.958</td>
-            <td class="num">12.25</td>
-            <td class="num">0.01522</td>
-            <td class="num">0.639</td>
-            <td>NC46</td>
-          </tr>
-          <tr>
-            <td>4-1/2&quot; 16.60#</td>
-            <td class="num">0.337</td>
-            <td class="num">3.826</td>
-            <td class="num">15.00</td>
-            <td class="num">0.01422</td>
-            <td class="num">0.597</td>
-            <td>NC46</td>
-          </tr>
-          <tr>
-            <td>4-1/2&quot; 20.00#</td>
-            <td class="num">0.430</td>
-            <td class="num">3.640</td>
-            <td class="num">18.71</td>
-            <td class="num">0.01287</td>
-            <td class="num">0.541</td>
-            <td>NC46 / NC50 — mill sheet</td>
-          </tr>
-          <tr>
-            <td>4-1/2&quot; 22.82#</td>
-            <td class="num">0.500</td>
-            <td class="num">3.500</td>
-            <td class="num">21.38</td>
-            <td class="num">0.01190</td>
-            <td class="num">0.500</td>
-            <td>Confirm mill sheet</td>
-          </tr>
-          <tr>
-            <td>4-1/2&quot; HWDP (not DP)</td>
-            <td class="num">0.875 typ.</td>
-            <td class="num">2.750 typ.</td>
-            <td class="num">~41–46 adj.*</td>
-            <td class="num">~0.0073</td>
-            <td class="num">~0.31</td>
-            <td>NC46 typical</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">*HWDP row is a <strong>typical published mill-sheet range</strong> (standard vs spiral, tool joints included), not a calculation from this form and not a quote on any string. Adjusted DP weight with tool joints is higher than body weight — often ~20–22 lb/ft on 16.60# R2 NC46, but that number moves with TJ length, hardband, and coating. Use the sheet in the rack.</p>
-  </section>
+    <section id="tools">
+      <h2>Field tools</h2>
+      <a class="tool" href="./4-5-inch-drill-pipe-weight-capacity-calculator.html">
+        <p class="lbl">Calculator</p>
+        <strong>4.5 inch drill pipe weight &amp; capacity</strong>
+        <span>Body weight, string weight, bbl/ft, and displacement. API 5DP designations — no invented mill-sheet numbers.</span>
+      </a>
+    </section>
 
-  <section class="block">
-    <h2>Formulas (field handbook, not invented)</h2>
-    <p><strong>Internal capacity</strong> (Lapeyrouse / standard field books):</p>
-    <p><span class="formula">bbl/ft = ID² / 1029.4</span> &nbsp; <span class="formula">gal/ft = ID² / 24.51</span> &nbsp; <span class="formula">ft/bbl = 1029.4 / ID²</span></p>
-    <p>1029.4 comes from cylinder volume: 42 gal/bbl × 231 in³/gal = 9702 in³/bbl, then π/4 × 12 in/ft ÷ 9702.</p>
-    <p><strong>Displacement of steel</strong> (open-ended): <span class="formula">(OD² − ID²) / 1029.4</span> bbl/ft. Closed-end (metal + bore): <span class="formula">OD² / 1029.4</span> bbl/ft.</p>
-    <p><strong>Plain-end body mass</strong> (API TR 5C3 / ISO 10400, USC): <span class="formula">w = 10.69 × (D − t) × t</span> lb/ft. Some handbooks use 10.68. That is the tube, no tool joints, no hardband, no coating.</p>
-    <p><strong>What this page will not do:</strong> print tensile, burst, collapse, or make-up torque by grade (E / X / G / S-135). Those come from API 5DP + the mill sheet + remaining body wall. Guessing them is how people get hurt or buy the wrong iron.</p>
-    <h3>Assumptions on this calculator</h3>
-    <ul>
-      <li>New nominal wall unless you type a worn or premium-class wall (80% RBW on 0.337&quot; is 0.270&quot; — ID opens up, capacity goes up, steel goes down).</li>
-      <li>Body ID, not tool-joint bore. NC46 pin/box bore can be the restriction for displacement / slug calculations.</li>
-      <li>No internal plastic coating. A typical ~0.009&quot; IPC cut on ID shrinks capacity a few percent (mill sheets often show ~0.0132 bbl/ft vs 0.0142 bare on 16.60#).</li>
-      <li>Range 2 joint length is a range, not a law. Default 31 ft is a field shorthand including tool joints — tally the string.</li>
-      <li>Mud-weight fluid mass uses 42 gal/bbl × ppg. Default 8.33 ppg is freshwater, not a drilling fluid recommendation.</li>
-    </ul>
-  </section>
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p><strong>Chris Tyler</strong>, Managing Member</p>
+      <p><a href="tel:+19402574173">940-257-4173</a></p>
+      <p><a href="mailto:ctyler76310@gmail.com">ctyler76310@gmail.com</a></p>
+      <p>P.O. Box 62, Holliday, TX 76366</p>
+      <p class="cta-line">Need pipe, rods, or a package placed? <a href="https://wa.me/19402574173">WhatsApp Chris Tyler / Crimson Drilling Services</a></p>
+    </section>
+  </main>
 
-  <section class="block">
-    <h2>FAQ</h2>
-
-    <details class="faq" open>
-      <summary>How much does 4.5 inch drill pipe weigh per foot?</summary>
-      <p>Three different numbers get called “weight.” The API <strong>nominal</strong> label on the most common 4-1/2&quot; string is 16.60 lb/ft. The <strong>plain-end body</strong> (0.337&quot; wall) calculates to about 15.0 lb/ft with the 10.69 formula. <strong>Adjusted weight</strong> with tool joints is higher and is whatever the mill sheet says for that TJ OD/ID and length — often around the low 20s lb/ft on R2 NC46, but we will not invent a hook-load number. If you are sizing a crane or a hook, use adjusted weight from the sheet, not the 16.60 stamp.</p>
-    </details>
-    <details class="faq">
-      <summary>What is the ID of 4.5&quot; 16.60 lb/ft drill pipe?</summary>
-      <p>Calculated body ID is 3.826 in (4.500 − 2 × 0.337). That is the API 5DP body number. Tool-joint ID is a separate dimension (often ~2.75 in on NC46, mill-dependent) and can control drift and hydraulics more than the tube.</p>
-    </details>
-    <details class="faq">
-      <summary>How do you calculate drill pipe capacity in bbl/ft?</summary>
-      <p>Square the inside diameter in inches and divide by 1029.4. For 16.60# 4-1/2&quot;: 3.826² / 1029.4 ≈ 0.01422 bbl/ft, or about 0.597 gal/ft. A 10,000 ft dry string holds about 142 bbl of capacity before you derate for coating or a tighter tool-joint bore.</p>
-    </details>
-    <details class="faq">
-      <summary>Why doesn’t nominal weight match the formula?</summary>
-      <p>Nominal weight is a designation, leftover from older pipe tables, not a bathroom scale. Plain-end mass is the tube. Adjusted mass adds upsets and welded-on tool joints. If someone quotes you “16.60 pound pipe” for a truck weight, ask whether they mean the stamp or the mill-sheet adjusted number. The truck cares about the second one.</p>
-    </details>
-    <details class="faq">
-      <summary>What’s the difference between 4.5&quot; drill pipe and 4.5&quot; HWDP?</summary>
-      <p>Same OD so it handles like DP. HWDP has a much thicker wall (typical tube ID around 2.75 in vs 3.826 in), a center wear pad, and adjusted weight commonly in the low-to-mid 40s lb/ft — two and a half times a 16.60# DP body. You run HWDP between collars and DP for a smoother stiffness transition. Spiral vs conventional changes OD profile and often the adjusted weight. See the HWDP vs drill pipe compare page when it ships.</p>
-    </details>
-    <details class="faq">
-      <summary>How many barrels in 10,000 ft of 4.5&quot; 16.60# DP?</summary>
-      <p>About 142 bbl of internal capacity at nominal body ID, freshwater-full fluid mass about 50,000 lb at 8.33 ppg. Derate if the pipe is coated or if you use tool-joint bore for the volume. Steel displacement of that string (open-ended) is about 55 bbl.</p>
-    </details>
-    <details class="faq">
-      <summary>What connection is on 4.5 inch drill pipe?</summary>
-      <p>Most 4-1/2&quot; 16.60# is NC46 (also called 4-1/2 IF). Heavier 4-1/2&quot; 20.00# sometimes ships NC46 or NC50 — that is a mill-sheet question, not a guess from OD. Do not mix connections on a string and hope.</p>
-    </details>
-    <details class="faq">
-      <summary>Does this include tool joints?</summary>
-      <p>Capacity and body weight: no. Adjusted weight: only if you type the mill-sheet number in the optional box. Joint count uses the optional joint length (default 31 ft as a Range 2 shorthand). Tally beats a default.</p>
-    </details>
-  </section>
-
-  <section class="block">
-    <h2>Related tools</h2>
-    <p class="links">
-      <a class="stub" href="./002-hwdp-vs-drill-pipe.html">HWDP vs drill pipe</a>
-      <a class="stub" href="./003-drill-pipe-capacity-calculator.html">Drill pipe capacity (all sizes)</a>
-      <a class="stub" href="./004-tubing-weight-calculator.html">Tubing weight</a>
-      <a class="stub" href="./005-rod-string-weight-calculator.html">Rod string weight</a>
-      <a class="stub" href="./006-casing-capacity-calculator.html">Casing capacity</a>
-      <a class="stub" href="./007-annular-volume-calculator.html">Annular volume</a>
-      <a class="stub" href="./008-hydrostatic-from-mud-weight.html">Hydrostatic from mud weight</a>
-      <a class="stub" href="./009-bit-nozzle-hhp-calculator.html">Bit nozzle HHP</a>
-      <a class="stub" href="./010-centrifuge-g-force-calculator.html">Centrifuge G-force</a>
-    </p>
-  </section>
-
-  <footer class="cta">
-    <h2>Crimson Drilling Services LLC</h2>
-    <p>I help operators and service companies place and source tubulars — drill pipe, HWDP, casing, rods — with real ops judgment on specs and condition. If it’s junk, I’ll say so. This page is a field calculator, not a catalog, and it does not quote iron.</p>
-    <p class="line">Need pipe, rods, or a package placed? WhatsApp Chris Tyler / Crimson Drilling Services</p>
-    <p class="identity">Chris Tyler, Managing Member · 940-257-4173 · ctyler76310@gmail.com · P.O. Box 62, Holliday, TX 76366</p>
-    <p class="fine">Not an offer. No prices on this page. Texas-based. Domestic and international when the deal makes sense.</p>
+  <footer class="site">
+    <p>Crimson Drilling Services LLC · File #806591157 · Texas LLC</p>
+    <p class="legal">Not an offer. No prices on this page. Place or source tubulars when the deal makes sense — domestic and international.</p>
   </footer>
 </div>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much does 4.5 inch drill pipe weigh per foot?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Three numbers get called weight. The common API nominal label is 16.60 lb/ft. Plain-end body mass at 0.337 in wall is about 15.0 lb/ft using w = 10.69 × (D − t) × t. Adjusted weight with tool joints is mill-sheet specific and higher; do not use the 16.60 stamp for hook-load."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the ID of 4.5 inch 16.60 lb/ft drill pipe?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Calculated body ID is 3.826 in (4.500 − 2 × 0.337) per API 5DP body dimensions. Tool-joint bore is a separate mill-sheet dimension."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do you calculate drill pipe capacity in bbl/ft?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Capacity bbl/ft = ID² / 1029.4 (Lapeyrouse field formula). For 4.5 in 16.60 lb/ft pipe, 3.826² / 1029.4 ≈ 0.01422 bbl/ft."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why doesn't nominal drill pipe weight match the body-weight formula?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nominal weight is an API designation, not a scale weight. Plain-end mass is the tube only. Adjusted mass includes upsets and tool joints and must come from the mill sheet."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the difference between 4.5 inch drill pipe and 4.5 inch HWDP?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Same OD for handling. HWDP has a much thicker wall (typical ID around 2.75 in), a center wear pad, and adjusted weight commonly in the low-to-mid 40s lb/ft versus ~16.60 nominal for DP. Confirm spiral vs conventional on the mill sheet."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How many barrels in 10,000 ft of 4.5 inch 16.60 lb/ft drill pipe?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "About 142 bbl internal capacity at nominal body ID. Derate for internal coating or if tool-joint bore is the restriction. Open-end steel displacement is about 55 bbl."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What connection is typical on 4.5 inch drill pipe?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most 4-1/2 in 16.60 lb/ft drill pipe is NC46 (4-1/2 IF). Heavier 20.00 lb/ft 4-1/2 in pipe may be NC46 or NC50 — confirm the mill sheet."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this calculator include tool joints?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Body capacity and plain-end weight do not include tool joints. Adjusted weight is used only if you enter the mill-sheet value. Optional joint length (default 31 ft) is a Range 2 shorthand — tally the string."
-      }
-    }
-  ]
+  "@type": "ProfessionalService",
+  "name": "Crimson Drilling Services LLC",
+  "url": "https://ctyler76310-sketch.github.io/crimson-drilling-tools/",
+  "image": "https://ctyler76310-sketch.github.io/crimson-drilling-tools/assets/cds-logo-derrick.png",
+  "telephone": "+1-940-257-4173",
+  "email": "ctyler76310@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "P.O. Box 62",
+    "addressLocality": "Holliday",
+    "addressRegion": "TX",
+    "postalCode": "76366",
+    "addressCountry": "US"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Chris Tyler",
+    "jobTitle": "Managing Member"
+  },
+  "description": "Oil and gas drilling consulting, site supervision, and solids control. Place or source drill pipe, rods, and packages.",
+  "areaServed": "US"
 }
-</script>
-<script>
-(function () {
-  var PRESETS = {
-    "13.75": { od: 4.5, wall: 0.271, id: 3.958, nom: 13.75 },
-    "16.60": { od: 4.5, wall: 0.337, id: 3.826, nom: 16.60 },
-    "20.00": { od: 4.5, wall: 0.430, id: 3.640, nom: 20.00 },
-    "22.82": { od: 4.5, wall: 0.500, id: 3.500, nom: 22.82 }
-  };
-  var idLocked = false;
-  var od = document.getElementById("od");
-  var wall = document.getElementById("wall");
-  var idEl = document.getElementById("id");
-  var nom = document.getElementById("nom");
-  var len = document.getElementById("len");
-  var jt = document.getElementById("jt");
-  var adj = document.getElementById("adj");
-  var mw = document.getElementById("mw");
-  var out = document.getElementById("out");
-  var assumptions = document.getElementById("assumptions");
-
-  function num(el) {
-    var v = parseFloat(el.value);
-    return isFinite(v) ? v : NaN;
-  }
-  function fmt(n, d) {
-    if (!isFinite(n)) return "—";
-    return n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
-  }
-  function syncId() {
-    if (idLocked) return;
-    var D = num(od), t = num(wall);
-    if (D > 0 && t > 0) idEl.value = (D - 2 * t).toFixed(3);
-  }
-  function setPreset(key) {
-    var p = PRESETS[key];
-    if (!p) return;
-    idLocked = false;
-    od.value = p.od.toFixed(3);
-    wall.value = p.wall.toFixed(3);
-    idEl.value = p.id.toFixed(3);
-    nom.value = p.nom.toFixed(2);
-    document.querySelectorAll(".presets button").forEach(function (b) {
-      b.setAttribute("aria-pressed", b.getAttribute("data-preset") === key ? "true" : "false");
-    });
-    calculate();
-  }
-  document.querySelectorAll(".presets button").forEach(function (b) {
-    b.addEventListener("click", function () { setPreset(b.getAttribute("data-preset")); });
-  });
-  od.addEventListener("input", syncId);
-  wall.addEventListener("input", syncId);
-  idEl.addEventListener("input", function () { idLocked = true; });
-
-  function calculate() {
-    var D = num(od), t = num(wall), ID = num(idEl), L = num(len);
-    var nomW = num(nom), jtL = num(jt), adjW = num(adj), MW = num(mw);
-    if (!(D > 0) || !(ID > 0) || !(L >= 0)) {
-      out.innerHTML = "<p class='note'>Need OD, ID, and length.</p>";
-      return;
-    }
-    if (t > 0 && Math.abs(ID - (D - 2 * t)) > 0.002) {
-      /* user overrode ID — keep it */
-    } else if (t > 0) {
-      ID = D - 2 * t;
-    }
-    var capBblFt = (ID * ID) / 1029.4;
-    var capGalFt = (ID * ID) / 24.51;
-    var ftPerBbl = (ID * ID) > 0 ? 1029.4 / (ID * ID) : NaN;
-    var dispBblFt = (D * D - ID * ID) / 1029.4;
-    var closedBblFt = (D * D) / 1029.4;
-    var bodyWt = (t > 0) ? 10.69 * (D - t) * t : NaN;
-    var bodyCheck = dispBblFt * 2747;
-    var nomStr = isFinite(nomW) ? nomW * L : NaN;
-    var bodyStr = isFinite(bodyWt) ? bodyWt * L : NaN;
-    var adjStr = isFinite(adjW) ? adjW * L : NaN;
-    var capBbl = capBblFt * L;
-    var capGal = capGalFt * L;
-    var dispBbl = dispBblFt * L;
-    var joints = (jtL > 0 && L > 0) ? L / jtL : NaN;
-    var fluidLb = (MW > 0) ? capGal * MW : NaN;
-
-    function stat(lbl, val, sub, wide) {
-      return "<div class='stat" + (wide ? " wide" : "") + "'><div class='lbl'>" + lbl + "</div><div class='val'>" + val + "</div>" +
-        (sub ? "<div class='sub'>" + sub + "</div>" : "") + "</div>";
-    }
-    out.innerHTML =
-      stat("Body weight", fmt(bodyWt, 2) + " lb/ft", "API 5C3 plain-end 10.69(D−t)t · check " + fmt(bodyCheck, 2) + " from disp×2747") +
-      stat("Nominal × footage", fmt(nomStr, 0) + " lb", isFinite(nomW) ? fmt(nomW, 2) + " lb/ft label × " + fmt(L, 0) + " ft — not hook-load" : "no nominal entered") +
-      stat("Adjusted × footage", isFinite(adjStr) ? fmt(adjStr, 0) + " lb" : "mill sheet needed", isFinite(adjW) ? fmt(adjW, 2) + " lb/ft from the sheet you typed" : "leave blank rather than guess TJs") +
-      stat("Body × footage", fmt(bodyStr, 0) + " lb", "tube only") +
-      stat("Capacity", fmt(capBblFt, 5) + " bbl/ft", fmt(capGalFt, 3) + " gal/ft · " + fmt(ftPerBbl, 1) + " ft/bbl") +
-      stat("String capacity", fmt(capBbl, 1) + " bbl", fmt(capGal, 0) + " gal") +
-      stat("Open-end displacement", fmt(dispBblFt, 5) + " bbl/ft", fmt(dispBbl, 1) + " bbl over the string") +
-      stat("Closed-end displacement", fmt(closedBblFt, 5) + " bbl/ft", "OD² / 1029.4") +
-      stat("Joints (optional)", isFinite(joints) ? fmt(joints, 1) : "—", jtL > 0 ? "at " + fmt(jtL, 1) + " ft/joint — tally beats this" : "no joint length") +
-      stat("Fluid in the pipe", isFinite(fluidLb) ? fmt(fluidLb, 0) + " lb" : "—", MW > 0 ? fmt(MW, 2) + " ppg × capacity" : "no MW", true);
-
-    var warn = [];
-    warn.push("Assumptions: body ID " + fmt(ID, 3) + " in; plain-end steel only; capacity ignores tool-joint bore and IPC; " +
-      (t > 0 ? "wall " + fmt(t, 3) + " in treated as new unless you typed worn/premium." : "wall not entered so body mass is blank."));
-    warn.push("Do not use nominal 16.60 (or any stamp) as crane / hook-load weight.");
-    assumptions.textContent = warn.join(" ");
-  }
-
-  document.getElementById("calc").addEventListener("submit", function (e) {
-    e.preventDefault();
-    calculate();
-  });
-  ["od","wall","id","nom","len","jt","adj","mw"].forEach(function (id) {
-    document.getElementById(id).addEventListener("change", calculate);
-  });
-  calculate();
-})();
 </script>
 </body>
 </html>
